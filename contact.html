@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Your Name</title>
-  </head>
-  <body>
-   
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact • Gaurish Vasireddy</title>
+
+  <!-- REQUIRED: your project stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <p>Gaurish Vasireddy</p>
+    <p><a href="index.html">About Gaurish</a></p>
+  </nav>
+
+  <main>
+    <section class="one-col">
+      <h3>Send a Message</h3>
+
+      <form method="POST" action="https://formsubmit.co/your_unique_form_id">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="How can I help?"></textarea>
+
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      &copy; <a href="index.html">Gaurish Vasireddy</a>
+      &nbsp; | &nbsp;
+      <a href="https://www.linkedin.com/in/gvasireddy/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </p>
+  </footer>
+
+</body>
 </html>
