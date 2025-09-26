@@ -21,17 +21,19 @@
   <!-- HEADER -->
   <header id="profile">
     <div class="splash">
-      <img src="images/headshot.jpeg" alt="Headshot of Gaurish" width="180" height="180">
+      <div class="portrait">
+        <img src="images/headshot.jpeg" alt="Headshot of Gaurish">
+      </div>
       <div>
         <h1>Gaurish Vasireddy</h1>
         <p class="address">
-          920 Benziger Trail, Alpharetta, GA &#8226; (678) 447-5634 &#8226; gvasireddy04@gmail.com
+          Alpharetta, GA &#8226; (678) 447-5634 &#8226; gvasireddy04@gmail.com
         </p>
         <p class="tagline">
-          Computer Science Student @ UGA | SWE + ML focus | Python, Java, JavaScript, C
+          <span class="tagline-static">Computer Science Student @ UGA &#8226; </span><span class="tagline-rotating" data-phrases='["Software Engineer", "Machine Learning", "Full-Stack Developer", "Data Scientist"]'>Software Engineer</span>
         </p>
-        <p class="tagline">
-          Prev IT Security &amp; Enterprise Architecture Intern @ Mercedes-Benz USA
+        <p class="tagline tagline-highlight">
+          Former IT Security &amp; Enterprise Architecture Intern @ Mercedes-Benz USA
         </p>
       </div>
     </div>
@@ -39,7 +41,7 @@
 
   <main class="container">
     <!-- EDUCATION -->
-    <section id="education">
+    <section id="education" class="reveal">
       <h3>Education</h3>
       <dl>
         <dt>University of Georgia</dt>
@@ -49,43 +51,81 @@
       </dl>
     </section>
 
-    <!-- HONORS -->
-    <section id="honors-awards">
-      <h3>Honors and Awards</h3>
-      <dl>
-        <dt>Dean's List</dt>
-        <dd>2024</dd>
-        <dt>STAR Intern Challenge Winner (Mercedes-Benz USA)</dt>
-        <dd>2025</dd>
-      </dl>
-    </section>
-
     <!-- SKILLS -->
-    <section id="skills">
+    <section id="skills" class="reveal">
       <h3>Skills</h3>
-      <ul>
-        <li>HTML</li>
-        <li>Java</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Python</li>
-        <li>Power BI</li>
-      </ul>
+      <div class="skill-grid">
+        <span class="skill-chip">SQL</span>
+        <span class="skill-chip">React</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">Java</span>
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">HTML</span>
+        <span class="skill-chip">Tableau</span>
+        <span class="skill-chip">Power BI</span>
+        <span class="skill-chip">AWS</span>
+        <span class="skill-chip">Excel</span>
+        <span class="skill-chip">PowerPoint</span>
+      </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="leadership-experience">
+    <section id="leadership-experience" class="reveal">
       <h3>Leadership and Experience</h3>
       <dl>
         <dt><a href="https://www.mbusa.com" target="_blank" rel="noopener">Mercedes-Benz USA — IT Security &amp; Enterprise Architecture Intern</a></dt>
-        <dd>Jun - Aug 2025</dd>
+        <dd>
+          <div class="experience-top">
+            <span class="experience-date">Jun - Aug 2025</span>
+            <button class="detail-button" type="button">View role details</button>
+          </div>
+          <div class="experience-details" hidden>
+            <ul>
+              <li>Automated Checkmarx scans with Python scripting, cutting manual review time by ~40% and ensuring faster detection of vulnerabilities across multiple projects.</li>
+              <li>Designed and validated IAM policies in AWS/Azure, reducing excess permissions by 25% and strengthening compliance with internal security standards.</li>
+              <li>Deployed Power BI dashboards consolidating risk and vulnerability data, improving reporting speed by 50% and providing clearer insights for senior architects.</li>
+            </ul>
+            <div class="experience-skills">
+              <button class="skills-toggle" type="button" aria-expanded="false">Show skills</button>
+              <ul class="skills-list" hidden>
+                <li>Python Automation</li>
+                <li>Checkmarx SAST</li>
+                <li>AWS IAM &amp; Azure AD</li>
+                <li>Power BI</li>
+                <li>Security Compliance</li>
+              </ul>
+            </div>
+          </div>
+        </dd>
         <dt>Undergraduate Researcher</dt>
-        <dd>Jan - May 2025</dd>
+        <dd>
+          <div class="experience-top">
+            <span class="experience-date">Jan - May 2025</span>
+            <button class="detail-button" type="button">View role details</button>
+          </div>
+          <div class="experience-details" hidden>
+            <ul>
+              <li>Developed an object detection pipeline using YOLO in Python, achieving 80% precision and 75% recall in detecting fly clusters on cattle images.</li>
+              <li>Collected, curated, and annotated a dataset of 5,000+ images using ImageJ and Roboflow, ensuring robust training data for model development.</li>
+              <li>Documented experiments and contributed to weekly progress reports presented to faculty advisors, supporting ongoing publication efforts.</li>
+            </ul>
+            <div class="experience-skills">
+              <button class="skills-toggle" type="button" aria-expanded="false">Show skills</button>
+              <ul class="skills-list" hidden>
+                <li>Python</li>
+                <li>Computer Vision</li>
+                <li>Edge ML (Micropython)</li>
+                <li>Data Labeling</li>
+                <li>Research Communication</li>
+              </ul>
+            </div>
+          </div>
+        </dd>
       </dl>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
+    <section id="projects" class="reveal">
       <h3>Projects</h3>
 
       <div class="three-col">
@@ -125,6 +165,16 @@
     </section>
   </main>
 
+  <div class="modal-backdrop" data-modal hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+      <button type="button" class="modal-close" aria-label="Close project details">&times;</button>
+      <div class="modal-body">
+        <h3 id="project-modal-title"></h3>
+        <div class="modal-content"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <p>
@@ -135,6 +185,176 @@
       </a>
     </p>
   </footer>
+
+  <script>
+    (function () {
+      document.body.classList.add('js-ready');
+
+      const modal = document.querySelector('[data-modal]');
+      if (modal) {
+        const closeBtn = modal.querySelector('.modal-close');
+        const modalTitle = modal.querySelector('#project-modal-title');
+        const modalContent = modal.querySelector('.modal-content');
+        let activeTrigger = null;
+
+        const setupSkillToggles = () => {
+          modalContent.querySelectorAll('.skills-toggle').forEach((toggle) => {
+            const skillsContainer = toggle.closest('.experience-skills');
+            const list = skillsContainer ? skillsContainer.querySelector('.skills-list') : null;
+            if (!list) return;
+            list.hidden = true;
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.textContent = 'Show skills';
+            toggle.addEventListener('click', () => {
+              const isHidden = list.hidden;
+              if (isHidden) {
+                list.hidden = false;
+                toggle.setAttribute('aria-expanded', 'true');
+                toggle.textContent = 'Hide skills';
+              } else {
+                list.hidden = true;
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = 'Show skills';
+              }
+            });
+          });
+        };
+
+        const openModal = (title, detailNode) => {
+          modalTitle.textContent = title || 'Project details';
+          modalContent.innerHTML = detailNode ? detailNode.innerHTML : '';
+          setupSkillToggles();
+          modal.removeAttribute('hidden');
+          modal.classList.add('is-open');
+          document.body.classList.add('modal-open');
+          if (closeBtn) {
+            closeBtn.focus({ preventScroll: true });
+          }
+        };
+
+        const closeModal = () => {
+          modal.classList.remove('is-open');
+          modal.setAttribute('hidden', '');
+          modalTitle.textContent = '';
+          modalContent.innerHTML = '';
+          document.body.classList.remove('modal-open');
+          if (activeTrigger) {
+            activeTrigger.focus({ preventScroll: true });
+            activeTrigger = null;
+          }
+        };
+
+        document.querySelectorAll('.detail-button').forEach((button) => {
+          button.addEventListener('click', () => {
+            const dd = button.closest('dd');
+            if (!dd) return;
+            let dt = dd.previousElementSibling;
+            while (dt && dt.tagName !== 'DT') {
+              dt = dt.previousElementSibling;
+            }
+            const detailEl = dd.querySelector('.experience-details');
+            const titleText = dt ? dt.textContent.trim() : '';
+            activeTrigger = button;
+            openModal(titleText, detailEl);
+          });
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeModal);
+        }
+
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+            event.preventDefault();
+            closeModal();
+          }
+        });
+      }
+
+      const rotatingEl = document.querySelector('.tagline-rotating');
+      if (rotatingEl) {
+        let phrases = [];
+        try {
+          phrases = JSON.parse(rotatingEl.dataset.phrases || '[]');
+        } catch (error) {
+          console.warn('Unable to parse tagline phrases', error);
+        }
+
+        if (phrases.length) {
+          let phraseIndex = 0;
+          let charIndex = 0;
+          let deleting = false;
+          const typingDelay = 110;
+          const deletingDelay = 55;
+          const holdDelay = 1300;
+
+          const typeNext = () => {
+            const phrase = phrases[phraseIndex] || '';
+
+            if (!deleting && charIndex <= phrase.length) {
+              rotatingEl.textContent = phrase.slice(0, charIndex);
+              charIndex += 1;
+
+              if (charIndex > phrase.length) {
+                deleting = true;
+                setTimeout(typeNext, holdDelay);
+                return;
+              }
+
+              setTimeout(typeNext, typingDelay);
+              return;
+            }
+
+            if (deleting && charIndex >= 0) {
+              rotatingEl.textContent = phrase.slice(0, charIndex);
+              charIndex -= 1;
+
+              if (charIndex < 0) {
+                deleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                charIndex = 0;
+                setTimeout(typeNext, 240);
+                return;
+              }
+
+              setTimeout(typeNext, deletingDelay);
+            }
+          };
+
+          rotatingEl.classList.add('tagline-cursor');
+          rotatingEl.textContent = '';
+          setTimeout(typeNext, 400);
+        }
+      }
+
+      const revealElements = document.querySelectorAll('.reveal');
+      if (revealElements.length) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        if (prefersReducedMotion.matches) {
+          revealElements.forEach((el) => el.classList.add('is-visible'));
+        } else {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+              } else {
+                entry.target.classList.remove('is-visible');
+              }
+            });
+          }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+          revealElements.forEach((el) => observer.observe(el));
+        }
+      }
+    })();
+  </script>
 
 </body>
 </html>
